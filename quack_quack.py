@@ -45,11 +45,11 @@ def get_embedding(text):
     )
     return result.data[0].embedding
 
-def get_source_vid(stig_title, df):
+def get_source_vid(stig_title):
     prompt = stig_title # "Directory Browsing on the IIS 10.0 website must be disabled"
     prompt_embedding = get_embedding(prompt)
-    #df = get_source_stigs(source_embeddings)
-    source_dataframe = build_source_embeddings()
+    #source_dataframe = get_source_stigs(source_embeddings)
+    #source_dataframe = build_source_embeddings()
     source_dataframe['prompt_similarity'] = source_dataframe['embedding'].apply(lambda vector: vector_similarity(vector, prompt_embedding))
     if bool(source_dataframe.nlargest(1, 'prompt_similarity').iloc[0]['prompt_similarity'] < .9):
         return "None"
