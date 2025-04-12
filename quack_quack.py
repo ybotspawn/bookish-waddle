@@ -9,7 +9,9 @@ import pandas as pd
 openai.api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI()
 
-def build_source_stigs(source_stig_csv):
+SOURCE_EMBEDDINGS = "stig_embeddings.csv"
+
+def build_source_embeddings(source_stig_csv):
     df = pd.read_csv(source_stig_csv)    
     num_tokens_from_string(df['summary'][0], "cl100k_base")
     df['token_count'] = df['summary'].apply(lambda text:num_tokens_from_string(text, "cl100k_base"))
@@ -36,9 +38,14 @@ def get_embedding(text):
     )
     return result.data[0].embedding
 
-def get_source_vid(stig_title, df):
+# Decorator here
+def get_source_vid(stig_title):
     prompt = stig_title # "Directory Browsing on the IIS 10.0 website must be disabled"
     prompt_embedding = get_embedding(prompt)
+    embedding_path = SOURCE_EMBEDDINGS
+    if (True): # This should be moved to our decorator
+        embedding_path="stig_embeddings.csv" # path to be specified by argument
+    df = get_source_stigs(embedding_path)
     df['prompt_similarity'] = df['embedding'].apply(lambda vector: vector_similarity(vector, prompt_embedding))
     return df.nlargest(1, 'prompt_similarity').iloc[0]['v-id']
 
@@ -47,7 +54,7 @@ def vector_similarity(vector1, vector2):
     # The prompt similarity does not need to be written out to the data file so that we can reuse the data file
     return np.dot(np.array(vector1), np.array(vector2))
 
-# Decorator here to validate the stig_embeddings.csv exists
+# Decorator here to validate an embeddings file exists in the current directory or that a path has been provided
 def crossref_stigs(target_stig_file):
     # have to pass each IIS 10.0 stig in to the promp embedding and df.nlargest function
     targetstig = pd.read_csv(target_stig_file)
