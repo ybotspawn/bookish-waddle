@@ -1,0 +1,91 @@
+﻿v-id,summary
+V-76679,The IIS 8.5 web server remote authors or content providers must only use secure encrypted logons and connections to upload web server content
+V-76681,The enhanced logging for the IIS 8.5 web server must be enabled and capture all user and web server events 
+V-76683,Both the log file and Event Tracing for Windows (ETW) for the IIS 8.5 web server must be enabled 
+V-76685,"An IIS 8.5 web server behind a load balancer or proxy server, must produce log records containing the source client IP and destination information"
+V-76687,The IIS 8.5 web server must produce log records that contain sufficient information to establish the outcome (success or failure) of IIS 8.5 web server events
+V-76689,The IIS 8.5 web server must produce log records containing sufficient information to establish the identity of any user/subject or process associated with an event
+V-76695,The log information from the IIS 8.5 web server must be protected from unauthorized modification or deletion
+V-76697,The log data and records from the IIS 8.5 web server must be backed up onto a different system or media 
+V-76701,The IIS 8.5 web server must only contain functions necessary for operation
+V-76703,The IIS 8.5 web server must not be both a website server and a proxy server
+V-76705,"All IIS 8.5 web server sample code, example applications, and tutorials must be removed from a production IIS 8.5 server"
+V-76707,"The accounts created by uninstalled features (i.e., tools, utilities, specific, etc.) must be deleted from the IIS 8.5 server"
+V-76709,"The IIS 8.5 web server must be reviewed on a regular basis to remove any Operating System features, utility programs, plug-ins, and modules not necessary for operation"
+V-76711,The IIS 8.5 web server must have Multipurpose Internet Mail Extensions (MIME) that invoke OS shell programs disabled
+V-76713, The IIS 8.5 web server must have Web Distributed Authoring and Versioning (WebDAV) disabled
+V-76715,The IIS 8.5 web server must perform RFC 5280-compliant certification path validation
+V-76717,Java software installed on a production IIS 8.5 web server must be limited to .class files and the Java Virtual Machine
+V-76725,The IIS 8.5 web server must use cookies to track session state
+V-76727,The IIS 8.5 web server must limit the amount of time a cookie persists
+V-76731,The production IIS 8.5 web server must utilize SHA2 encryption for the Machine Key 
+V-76733,Directory Browsing on the IIS 8.5 web server must be disabled
+V-76735,The IIS 8.5 web server Indexing must only index web content
+V-76737,Warning and error messages displayed to clients must be modified to minimize the identity of the IIS 8.5 web server
+V-76741,The IIS 8.5 web server must restrict inbound connections from nonsecure zones
+V-76745,IIS 8.5 web server system files must conform to minimum file permission requirements
+V-76747,The IIS 8.5 web server must use a logging mechanism that is configured to allocate log record storage capacity large enough to accommodate the logging requirements of the IIS 8.5 web server
+V-76749,Access to web administration tools must be restricted to the web manager and the web managers designees
+V-76751,The IIS 8.5 web server must not be running on a system providing any other role
+V-76753,The Internet Printing Protocol (IPP) must be disabled on the IIS 8.5 web server
+V-76755,The IIS 8.5 web server must be tuned to handle the operational requirements of the hosted application
+V-76757,IIS 8.5 web server session IDs must be sent to the client using TLS
+V-76759,An IIS 8.5 web server must maintain the confidentiality of controlled information during transmission through the use of an approved TLS version
+V-76761,A web server must maintain the confidentiality of controlled information during transmission through the use of an approved TLS version
+V-76763,"The IIS 8.5 web server must install security-relevant software updates within the configured time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs)"
+V-76765,All accounts installed with the IIS 8.5 web server software and tools must have passwords assigned and default passwords changed
+V-76767,The File System Object component must be disabled on the IIS 8.5 web server
+V-76769,Unspecified file extensions on a production IIS 8.5 web server must be removed
+V-76771, The IIS 8.5 web server must have a global authorization rule configured to restrict access
+V-76773,The IIS 8.5 websites MaxConnections setting must be configured to limit the number of allowed simultaneous session requests 
+V-76775, The IIS 8.5 website session state must be enabled 
+V-76777,The IIS 8.5 website session state cookie settings must be configured to Use Cookies mode
+V-76779,A private IIS 8.5 website must only accept Secure Socket Layer connections
+V-76781,A public IIS 8.5 website must only accept Secure Socket Layer connections when authentication is required
+V-76783,"The enhanced logging for each IIS 8.5 website must be enabled and capture, record, and log all content related to a user session"
+V-76785,Both the log file and Event Tracing for Windows (ETW) for each IIS 8.5 website must be enabled
+V-76787,"An IIS 8.5 website behind a load balancer or proxy server, must produce log records containing the source client IP and destination information"
+V-76789,The IIS 8.5 website must produce log records that contain sufficient information to establish the outcome (success or failure) of IIS 8.5 website events
+V-76791,The IIS 8.5 website must produce log records containing sufficient information to establish the identity of any user/subject or process associated with an event
+V-76795,The log information from the IIS 8.5 website must be protected from unauthorized modification or deletion
+V-76797,The IIS 8.5 web site must have Multipurpose Internet Mail Extensions (MIME) that invoke OS shell programs disabled
+V-76799,Mappings to unused and vulnerable scripts on the IIS 8.5 website must be removed
+V-76801, The IIS 8.5 website must have resource mappings set to disable the serving of certain file types
+V-76803,The IIS 8.5 website must have Web Distributed Authoring and Versioning (WebDAV) disabled
+V-76805,The production website must configure the Global .NET Trust Level
+V-76807,Each IIS 8.5 website must be assigned a default host header
+V-76809,A private websites authentication mechanism must use client certificates to transmit session identifier to assure integrity
+V-76811,Anonymous IIS 8.5 website access accounts must be restricted
+V-76813,The IIS 8.5 website must generate unique session identifiers that cannot be reliably reproduced
+V-76815,The IIS 8.5 website document directory must be in a separate partition from the IIS 8.5 websites system files
+V-76817,The IIS 8.5 website must be configured to limit the maxURL
+V-76819,The IIS 8.5 website must be configured to limit the size of web requests
+V-76821,The IIS 8.5 websites Maximum Query String limit must be configured
+V-76823,Non-ASCII characters in URLs must be prohibited by any IIS 8.5 website
+V-76825,Double encoded URL requests must be prohibited by any IIS 8.5 website
+V-76827,Unlisted file extensions in URL requests must be filtered by any IIS 8.5 website
+V-76829,Directory Browsing on the IIS 8.5 website must be disabled
+V-76831,The IIS 8.5 website must prevent a web content directory from being displayed
+V-76835,"Warning and error messages displayed to clients must be modified to minimize the identity of the IIS 8.5 website, patches, loaded modules, and directory paths"
+V-76837,Debugging and trace information used to diagnose the IIS 8.5 website must be disabled
+V-76839,The Idle Time-out monitor for each IIS 8.5 website must be enabled
+V-76841,The IIS 8.5 websites connectionTimeout setting must be explicitly configured to disconnect an idle session
+V-76845,The IIS 8.5 website must use a logging mechanism that is configured to allocate log record storage capacity large enough to accommodate the logging requirements of the IIS 8.5 website
+V-76847,"The IIS 8.5 websites must utilize ports, protocols, and services according to PPSM guidelines"
+V-76849,The IIS 8.5 private website have a server certificate issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs)
+V-76851,The IIS 8.5 private website must employ cryptographic mechanisms (TLS) and require client certificates
+V-76855,IIS 8.5 website session IDs must be sent to the client using TLS
+V-76859,"Cookies exchanged between the IIS 8.5 website and the client must use SSL/TLS, have cookie properties set to prohibit client-side scripts from reading the cookie data and must not be compressed"
+V-76861,The IIS 8.5 website must maintain the confidentiality and integrity of information during preparation for transmission and during reception
+V-76865,The IIS 8.5 website must have a unique application pool
+V-76867,The maximum number of requests an application pool can process for each IIS 8.5 website must be explicitly set
+V-76869,The amount of virtual memory an application pool uses for each IIS 8.5 website must be explicitly set
+V-76871,The amount of private memory an application pool uses for each IIS 8.5 website must be explicitly set
+V-76873,The application pool for each IIS 8.5 website must have a recycle time explicitly set
+V-76875,The maximum queue length for HTTP.sys for each IIS 8.5 website must be explicitly configured
+V-76877,The application pools pinging monitor for each IIS 8.5 website must be enabled
+V-76879,The application pools rapid fail protection for each IIS 8.5 website must be enabled
+V-76881,The application pools rapid fail protection settings for each IIS 8.5 website must be managed
+V-76885,Interactive scripts on the IIS 8.5 web server must be located in unique and designated folders
+V-76887,Interactive scripts on the IIS 8.5 web server must have restrictive access controls
+V-76889,Backup interactive scripts on the IIS 8.5 server must be removed
