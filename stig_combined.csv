@@ -1,0 +1,89 @@
+v-id,summary,legacy-id
+V-218786,Both the log file and Event Tracing for Windows (ETW) for the IIS 10.0 web server must be enabled.,V-76683
+V-218787,An IIS 10.0 web server behind a load balancer or proxy server must produce log records containing the source client IP and destination information.,V-76685
+V-218788,The IIS 10.0 web server must produce log records that contain sufficient information to establish the outcome (success or failure) of IIS 10.0 web server events.,V-76687
+V-218789,The IIS 10.0 web server must produce log records containing sufficient information to establish the identity of any user/subject or process associated with an event.,V-76689
+V-218790,The log information from the IIS 10.0 web server must be protected from unauthorized modification or deletion.,V-76695
+V-218791,The log data and records from the IIS 10.0 web server must be backed up onto a different system or media.,V-76697
+V-218793,The IIS 10.0 web server must only contain functions necessary for operation.,V-76701
+V-218794,The IIS 10.0 web server must not be both a website server and a proxy server.,V-76703
+V-218795,"All IIS 10.0 web server sample code, example applications, and tutorials must be removed from a production IIS 10.0 server.",V-76705
+V-241789,ASP.NET version must be removed from the HTTP Response Header information.,
+V-218796,"The accounts created by uninstalled features (i.e., tools, utilities, specific, etc.) must be deleted from the IIS 10.0 server.",V-76707
+V-218797,"The IIS 10.0 web server must be reviewed on a regular basis to remove any Operating System features, utility programs, plug-ins, and modules not necessary for operation.",V-76709
+V-218798,The IIS 10.0 web server must have Multipurpose Internet Mail Extensions (MIME) that invoke OS shell programs disabled.,V-76711
+V-218801,Java software installed on a production IIS 10.0 web server must be limited to .class files and the Java Virtual Machine.,V-76717
+V-218804,The IIS 10.0 web server must use cookies to track session state.,V-76725
+V-218807,The production IIS 10.0 web server must utilize SHA2 encryption for the Machine Key.,V-76731
+V-218808,Directory Browsing on the IIS 10.0 web server must be disabled.,V-76733
+V-218809,The IIS 10.0 web server Indexing must only index web content.,V-76735
+V-241788,HTTPAPI Server version must be removed from the HTTP Response Header information.,V-76737
+V-218812,The IIS 10.0 web server must restrict inbound connections from non-secure zones.,V-76741
+V-218814,IIS 10.0 web server system files must conform to minimum file permission requirements.,V-76745
+V-218815,The IIS 10.0 web server must use a logging mechanism configured to allocate log record storage capacity large enough to accommodate the logging requirements of the IIS 10.0 web server.,V-76747
+V-218816,Access to web administration tools must be restricted to the web manager and the web managers designees.,V-76749
+V-218792,The IIS 10.0 web server must not perform user management for hosted applications.,
+V-218817,The IIS 10.0 web server must not be running on a system providing any other role.,V-76751
+V-218818,The Internet Printing Protocol (IPP) must be disabled on the IIS 10.0 web server.,V-76753
+V-218803,The IIS 10.0 web server must separate the hosted applications from hosted web server management functionality.,
+V-218806,The IIS 10.0 web server must augment re-creation to a stable and known baseline.,
+V-218813,The IIS 10.0 web server must provide the capability to immediately disconnect or disable remote access to the hosted applications.,
+V-218819,The IIS 10.0 web server must be tuned to handle the operational requirements of the hosted application.,V-76755
+V-218820,IIS 10.0 web server session IDs must be sent to the client using TLS.,V-76757
+V-218821,An IIS 10.0 web server must maintain the confidentiality of controlled information during transmission through the use of an approved Transport Layer Security (TLS) version.,V-76759
+V-218822,The IIS 10.0 web server must maintain the confidentiality of controlled information during transmission through the use of an approved Transport Layer Security (TLS) version.,V-76759
+V-218823,All accounts installed with the IIS 10.0 web server software and tools must have passwords assigned and default passwords changed.,V-76765
+V-218824,Unspecified file extensions on a production IIS 10.0 web server must be removed.,V-76769
+V-218825,The IIS 10.0 web server must have a global authorization rule configured to restrict access.,V-76771
+V-218826,The IIS 10.0 websites MaxConnections setting must be configured to limit the number of allowed simultaneous session requests.,V-76773
+V-268325,The Request Smuggling filter must be enabled.,V-76775
+V-218735,The IIS 10.0 website session state must be enabled.,V-76775
+V-218736,The IIS 10.0 website session state cookie settings must be configured to Use Cookies mode.,V-76777
+V-218737,A private IIS 10.0 website must only accept Secure Socket Layer (SSL) connections.,V-76779
+V-228572,An IIS Server configured to be a SMTP relay must require authentication.,
+V-218738,A public IIS 10.0 website must only accept Secure Socket Layer (SSL) connections when authentication is required.,V-76781
+V-218739,Both the log file and Event Tracing for Windows (ETW) for each IIS 10.0 website must be enabled.,V-76785
+V-218740,"An IIS 10.0 website behind a load balancer or proxy server must produce log records containing the source client IP, and destination information.",V-76787
+V-218741,The IIS 10.0 website must produce log records that contain sufficient information to establish the outcome (success or failure) of IIS 10.0 website events.,V-76789
+V-218742,The IIS 10.0 website must produce log records containing sufficient information to establish the identity of any user/subject or process associated with an event.,V-76791
+V-218743,The IIS 10.0 website must have Multipurpose Internet Mail Extensions (MIME) that invoke OS shell programs disabled.,V-76797
+V-218744,Mappings to unused and vulnerable scripts on the IIS 10.0 website must be removed.,V-76799
+V-218745,The IIS 10.0 website must have resource mappings set to disable the serving of certain file types.,V-76801
+V-218799,The IIS 10.0 web server must have Web Distributed Authoring and Versioning (WebDAV) disabled.,V-76803
+V-218746,The IIS 10.0 website must have Web Distributed Authoring and Versioning (WebDAV) disabled.,V-76803
+V-218748,Each IIS 10.0 website must be assigned a default host header.,V-76807
+V-218749,A private IIS 10.0 website authentication mechanism must use client certificates to transmit session identifier to assure integrity.,V-76809
+V-218802,"IIS 10.0 Web server accounts accessing the directory tree, the shell, or other operating system functions and utilities must only be administrative accounts.",
+V-218750,Anonymous IIS 10.0 website access accounts must be restricted.,V-76811
+V-218805,The IIS 10.0 web server must accept only system-generated session identifiers.,
+V-218751,The IIS 10.0 website must generate unique session identifiers that cannot be reliably reproduced.,V-76813
+V-218752,The IIS 10.0 website document directory must be in a separate partition from the IIS 10.0 websites system files.,V-76815
+V-218753,The IIS 10.0 website must be configured to limit the maxURL.,V-76817
+V-218754,The IIS 10.0 website must be configured to limit the size of web requests.,V-76819
+V-218755,The IIS 10.0 websites Maximum Query String limit must be configured.,V-76821
+V-218756,Non-ASCII characters in URLs must be prohibited by any IIS 10.0 website.,V-76823
+V-218757,Double encoded URL requests must be prohibited by any IIS 10.0 website.,V-76825
+V-218758,Unlisted file extensions in URL requests must be filtered by any IIS 10.0 website.,V-76827
+V-218759,Directory Browsing on the IIS 10.0 website must be disabled.,V-76829
+V-218810,"Warning and error messages displayed to clients must be modified to minimize the identity of the IIS 10.0 web server, patches, loaded modules, and directory paths.",V-76835
+V-218760,"Warning and error messages displayed to clients must be modified to minimize the identity of the IIS 10.0 website, patches, loaded modules, and directory paths.",V-76835
+V-218761,Debugging and trace information used to diagnose the IIS 10.0 website must be disabled.,V-76837
+V-218762,The Idle Time-out monitor for each IIS 10.0 website must be enabled.,V-76839
+V-218763,The IIS 10.0 websites connectionTimeout setting must be explicitly configured to disconnect an idle session.,V-76841
+V-218764,The IIS 10.0 website must provide the capability to immediately disconnect or disable remote access to the hosted applications.,
+V-218765,The IIS 10.0 website must use a logging mechanism configured to allocate log record storage capacity large enough to accommodate the logging requirements of the IIS 10.0 website.,V-76845
+V-218766,"The IIS 10.0 websites must use ports, protocols, and services according to Ports, Protocols, and Services Management (PPSM) guidelines.",V-76847
+V-218767,The IIS 10.0 website must only accept client certificates issued by DOD PKI or DOD-approved PKI Certification Authorities (CAs).,V-76849
+V-218782,The required DoD banner page must be displayed to authenticated users accessing a DoD private website.,V-76849
+V-218827,The IIS 10.0 web server must enable HTTP Strict Transport Security (HSTS).,
+V-218768,The IIS 10.0 private website must employ cryptographic mechanisms (TLS) and require client certificates.,V-76851
+V-218769,IIS 10.0 website session IDs must be sent to the client using TLS.,V-76855
+V-218770,Cookies exchanged between the IIS 10.0 website and the client must have cookie properties set to prohibit client-side scripts from reading the cookie data.,V-76859
+V-218771,The IIS 10.0 website must have a unique application pool.,V-76865
+V-218772,The maximum number of requests an application pool can process for each IIS 10.0 website must be explicitly set.,V-76867
+V-218775,The application pool for each IIS 10.0 website must have a recycle time explicitly set.,V-76873
+V-218777,The application pools rapid fail protection for each IIS 10.0 website must be enabled.,V-76879
+V-218778,The application pools rapid fail protection settings for each IIS 10.0 website must be managed.,V-76881
+V-218779,Interactive scripts on the IIS 10.0 web server must be located in unique and designated folders.,V-76885
+V-218780,Interactive scripts on the IIS 10.0 web server must have restrictive access controls.,V-76887
+V-218781,Backup interactive scripts on the IIS 10.0 server must be removed.,V-76889
