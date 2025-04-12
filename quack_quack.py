@@ -1,4 +1,5 @@
 import numpy as np
+import argparse
 import os
 import tiktoken 
 from openai import OpenAI
