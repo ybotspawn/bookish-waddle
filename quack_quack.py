@@ -10,7 +10,14 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI()
 
 SOURCE_EMBEDDINGS = "stig_embeddings.csv"
+source_embeddings= ""
 
+class FilePathException(Exception):
+    def __init__(self, filepath):
+        self.message = f"Filepath: {filepath} either not provided or does not exist"
+    def __str__(self):
+        return self.message
+    
 def build_source_embeddings(source_stig_csv):
     df = pd.read_csv(source_stig_csv)    
     num_tokens_from_string(df['summary'][0], "cl100k_base")
@@ -38,14 +45,19 @@ def get_embedding(text):
     )
     return result.data[0].embedding
 
-# Decorator here
+def check_embedding_file(func):
+    def wrapper():
+        if (source_embeddings and os.path.exists(source_embeddings)):
+            pass
+        elif (os.path.exists(SOURCE_EMBEDDINGS)):
+            source_embeddings = SOURCE_EMBEDDINGS
+        elif (not source_embeddings and not os.path.exists(SOURCE_EMBEDDINGS)): # if the source_embeddings is not provided and the default location does not exist, throw an error
+            raise(FilePathException(SOURCE_EMBEDDINGS))
+
 def get_source_vid(stig_title):
     prompt = stig_title # "Directory Browsing on the IIS 10.0 website must be disabled"
     prompt_embedding = get_embedding(prompt)
-    embedding_path = SOURCE_EMBEDDINGS
-    if (True): # This should be moved to our decorator
-        embedding_path="stig_embeddings.csv" # path to be specified by argument
-    df = get_source_stigs(embedding_path)
+    df = get_source_stigs(source_embeddings)
     df['prompt_similarity'] = df['embedding'].apply(lambda vector: vector_similarity(vector, prompt_embedding))
     return df.nlargest(1, 'prompt_similarity').iloc[0]['v-id']
 
@@ -55,9 +67,11 @@ def vector_similarity(vector1, vector2):
     return np.dot(np.array(vector1), np.array(vector2))
 
 # Decorator here to validate an embeddings file exists in the current directory or that a path has been provided
+@check_embedding_file
 def crossref_stigs(target_stig_file):
     # have to pass each IIS 10.0 stig in to the promp embedding and df.nlargest function
     targetstig = pd.read_csv(target_stig_file)
     targetstig['legacy_id'] = targetstig['summary'].apply(get_source_vid) # effectively uses panda to do our for each over each value and applies it to our new field legacy_id
     targetstig.to_csv('stig_combined.csv')
 
+#variable name for embedding file will be source_embeddings; this will need to be set in our argparse
