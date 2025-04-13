@@ -45,9 +45,9 @@ def get_embedding(text):
     )
     return result.data[0].embedding
 
-def get_source_vid(stig_title):
+def get_source_vid(stig_title, source_dataframe):
     prompt_embedding = get_embedding(stig_title) # "Directory Browsing on the IIS 10.0 website must be disabled"
-    source_dataframe = get_source_stigs(source_embeddings)
+    #source_dataframe = get_source_stigs(source_embeddings)
     #source_dataframe = build_source_embeddings()
     source_dataframe['prompt_similarity'] = source_dataframe['embedding'].apply(lambda vector: vector_similarity(vector, prompt_embedding))
     if bool(source_dataframe.nlargest(1, 'prompt_similarity').iloc[0]['prompt_similarity'] < .9):
@@ -64,6 +64,7 @@ def vector_similarity(vector1, vector2):
 def crossref_stigs(target_stig_file):
     # have to pass each IIS 10.0 stig in to the promp embedding and df.nlargest function
     targetstig = pd.read_csv(target_stig_file)
-    targetstig['legacy-id'] = targetstig['summary'].apply(get_source_vid) # effectively uses panda to do our for each over each value and applies it to our new field legacy_id
+    df = get_source_stigs()
+    targetstig['legacy-id'] = targetstig['summary'].apply(get_source_vid, args=(df)) # effectively uses panda to do our for each over each value and applies it to our new field legacy_id
     targetstig.to_csv('stig_combined.csv')
 
