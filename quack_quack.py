@@ -4,13 +4,12 @@ import os
 import tiktoken 
 from openai import OpenAI
 import openai
-import tiktoken
 import pandas as pd
 openai.api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI()
 
-SOURCE_EMBEDDINGS = "stig_embeddings.csv"
-source_embeddings= ""
+SOURCE_EMBEDDING_FILE = "stig_embeddings.csv"
+
 
 class FilePathException(Exception):
     def __init__(self, filepath):
@@ -20,14 +19,14 @@ class FilePathException(Exception):
     
 def build_source_embeddings(source_stig_csv="stigs.csv"):
     source_dataframe = pd.read_csv(source_stig_csv)    
-    num_tokens_from_string(df['summary'][0], "cl100k_base")
+    num_tokens_from_string(source_dataframe['summary'][0], "cl100k_base")
     source_dataframe['token_count'] = source_dataframe['summary'].apply(lambda text:num_tokens_from_string(text, "cl100k_base"))
     source_dataframe['token_count'].sum() * .0004/1000 # One time cost
     source_dataframe['embedding'] = source_dataframe['summary'].apply(get_embedding)
     source_dataframe.to_csv('stig_embeddings.csv')
     return source_dataframe
 
-def get_source_stigs(source_stig_csv="stig_embeddings.csv"):
+def get_source_stig_embeddings(source_stig_csv="stig_embeddings.csv"):
     source_dataframe = pd.read_csv(source_stig_csv)
     return source_dataframe
 
@@ -47,7 +46,7 @@ def get_embedding(text):
 
 def get_source_vid(stig_title, source_dataframe):
     prompt_embedding = get_embedding(stig_title) # "Directory Browsing on the IIS 10.0 website must be disabled"
-    #source_dataframe = get_source_stigs(source_embeddings)
+    #source_dataframe = get_source_stig_embeddings(source_embeddings)
     #source_dataframe = build_source_embeddings()
     source_dataframe['prompt_similarity'] = source_dataframe['embedding'].apply(lambda vector: vector_similarity(vector, prompt_embedding))
     if bool(source_dataframe.nlargest(1, 'prompt_similarity').iloc[0]['prompt_similarity'] < .9):
@@ -62,9 +61,8 @@ def vector_similarity(vector1, vector2):
 
 # Decorator here to validate the stig_embeddings.csv exists
 def crossref_stigs(target_stig_file):
-    # have to pass each IIS 10.0 stig in to the promp embedding and df.nlargest function
     targetstig = pd.read_csv(target_stig_file)
-    df = get_source_stigs()
-    targetstig['legacy-id'] = targetstig['summary'].apply(get_source_vid, args=(df)) # effectively uses panda to do our for each over each value and applies it to our new field legacy_id
+    source_embeddings = build_source_embeddings() # testing purposes get_source_stig_embeddings()
+    targetstig['legacy-id'] = targetstig['summary'].apply(get_source_vid, args=(source_embeddings)) # effectively uses panda to do our for each over each value and applies it to our new field legacy_id
     targetstig.to_csv('stig_combined.csv')
 
