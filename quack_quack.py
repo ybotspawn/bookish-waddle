@@ -48,10 +48,10 @@ def check_embedding_file(func):
     def wrapper():
         if (source_embeddings and os.path.exists(source_embeddings)):
             pass
-        elif (os.path.exists(SOURCE_EMBEDDINGS)):
-            source_embeddings = SOURCE_EMBEDDINGS
-        elif (not source_embeddings and not os.path.exists(SOURCE_EMBEDDINGS)): # if the source_embeddings is not provided and the default location does not exist, throw an error
-            raise(FilePathException(SOURCE_EMBEDDINGS))
+        elif (os.path.exists(SOURCE_EMBEDDING_FILE)):
+            source_embeddings = SOURCE_EMBEDDING_FILE
+        elif (not source_embeddings and not os.path.exists(SOURCE_EMBEDDING_FILE)): # if the source_embeddings is not provided and the default location does not exist, throw an error
+            raise(FilePathException(SOURCE_EMBEDDING_FILE))
 
 def get_source_vid(stig_title, source_dataframe):
     prompt_embedding = get_embedding(stig_title) # "Directory Browsing on the IIS 10.0 website must be disabled"
