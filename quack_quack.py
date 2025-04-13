@@ -10,7 +10,6 @@ client = OpenAI()
 
 SOURCE_EMBEDDING_FILE = "stig_embeddings.csv"
 
-
 class FilePathException(Exception):
     def __init__(self, filepath):
         self.message = f"Filepath: {filepath} either not provided or does not exist"
@@ -44,6 +43,16 @@ def get_embedding(text):
     )
     return result.data[0].embedding
 
+
+def check_embedding_file(func):
+    def wrapper():
+        if (source_embeddings and os.path.exists(source_embeddings)):
+            pass
+        elif (os.path.exists(SOURCE_EMBEDDINGS)):
+            source_embeddings = SOURCE_EMBEDDINGS
+        elif (not source_embeddings and not os.path.exists(SOURCE_EMBEDDINGS)): # if the source_embeddings is not provided and the default location does not exist, throw an error
+            raise(FilePathException(SOURCE_EMBEDDINGS))
+
 def get_source_vid(stig_title, source_dataframe):
     prompt_embedding = get_embedding(stig_title) # "Directory Browsing on the IIS 10.0 website must be disabled"
     #source_dataframe = get_source_stig_embeddings(source_embeddings)
@@ -59,10 +68,12 @@ def vector_similarity(vector1, vector2):
     # The prompt similarity does not need to be written out to the data file so that we can reuse the data file
     return np.dot(np.array(vector1), np.array(vector2))
 
-# Decorator here to validate the stig_embeddings.csv exists
+# Decorator here to validate an embeddings file exists in the current directory or that a path has been provided
+@check_embedding_file
 def crossref_stigs(target_stig_file):
     targetstig = pd.read_csv(target_stig_file)
     source_embeddings = build_source_embeddings() # testing purposes get_source_stig_embeddings()
     targetstig['legacy-id'] = targetstig['summary'].apply(get_source_vid, args=(source_embeddings)) # effectively uses panda to do our for each over each value and applies it to our new field legacy_id
     targetstig.to_csv('stig_combined.csv')
 
+#variable name for embedding file will be source_embeddings; this will need to be set in our argparse
