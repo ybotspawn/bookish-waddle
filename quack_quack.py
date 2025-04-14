@@ -27,6 +27,7 @@ def build_source_embeddings(source_stig_csv="stigs.csv"):
 
 def get_source_stig_embeddings(source_stig_csv="stig_embeddings.csv"):
     source_dataframe = pd.read_csv(source_stig_csv)
+    source_dataframe["embedding"] = source_dataframe["embedding"].apply(eval).apply(np.array)
     return source_dataframe
 
 def num_tokens_from_string(string, encoding_name):
@@ -42,7 +43,6 @@ def get_embedding(text):
         input=text
     )
     return result.data[0].embedding
-
 
 def check_embedding_file(func):
     def wrapper():
@@ -72,7 +72,7 @@ def vector_similarity(vector1, vector2):
 @check_embedding_file
 def crossref_stigs(target_stig_file):
     targetstig = pd.read_csv(target_stig_file)
-    source_embeddings = build_source_embeddings() # testing purposes get_source_stig_embeddings()
+    source_embeddings =  get_source_stig_embeddings() #build_source_embeddings() # testing purposes
     targetstig['legacy-id'] = targetstig['summary'].apply(get_source_vid, args=(source_embeddings)) # effectively uses panda to do our for each over each value and applies it to our new field legacy_id
     targetstig.to_csv('stig_combined.csv')
 
