@@ -77,3 +77,14 @@ def crossref_stigs(target_stig_file):
     targetstig.to_csv('stig_combined.csv')
 
 #variable name for embedding file will be source_embeddings; this will need to be set in our argparse
+# Def main here
+parser = argparse.ArgumentParser(
+                    prog='Bookish Waddle',
+                    description='This program primarily performs a id match up based on key,value pairs of like text.  Though aimed at identifying legacy STIG Vulnerability IDs this program can be used to marry up any specific type of datathat has queryable text fields and a specific desired return value',
+                    )
+parser.add_argument('--embeddings', default="stig_embeddings.csv")
+parser.add_argument('--raw_source', default="stigs.csv")
+parser.add_argument('--raw_target', required=True)
+
+args = parser.parse_args()
+print(args.embeddings, args.raw_target, args.raw_source)
