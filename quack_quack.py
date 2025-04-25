@@ -85,6 +85,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('--embeddings', default="stig_embeddings.csv")
 parser.add_argument('--raw_source', default="stigs.csv")
 parser.add_argument('--raw_target', required=True)
+parser.add_argument('--threshold') # threshold for acceptance
 
 args = parser.parse_args()
 print(args.embeddings, args.raw_target, args.raw_source)
